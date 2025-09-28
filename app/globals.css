@@ -1,0 +1,363 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens to match TRENDY WUDPLAST brand colors */
+  --background: oklch(1 0 0); /* White */
+  --foreground: oklch(0.3 0.02 60); /* Brown #4C3934 */
+  --card: oklch(0.97 0.02 85); /* Cream #F5F4DB */
+  --card-foreground: oklch(0.3 0.02 60); /* Brown */
+  --popover: oklch(1 0 0); /* White */
+  --popover-foreground: oklch(0.3 0.02 60); /* Brown */
+  --primary: oklch(0.45 0.12 145); /* Green #14803D */
+  --primary-foreground: oklch(1 0 0); /* White */
+  --secondary: oklch(0.97 0.02 85); /* Cream */
+  --secondary-foreground: oklch(0.3 0.02 60); /* Brown */
+  --muted: oklch(0.96 0.02 120); /* Light Green #F0FDF4 */
+  --muted-foreground: oklch(0.45 0.01 240); /* Gray #374151 */
+  --accent: oklch(0.45 0.12 145); /* Green */
+  --accent-foreground: oklch(1 0 0); /* White */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 85); /* Light border */
+  --input: oklch(1 0 0); /* White */
+  --ring: oklch(0.45 0.12 145); /* Green focus ring */
+  --chart-1: oklch(0.45 0.12 145); /* Green */
+  --chart-2: oklch(0.3 0.02 60); /* Brown */
+  --chart-3: oklch(0.97 0.02 85); /* Cream */
+  --chart-4: oklch(0.45 0.01 240); /* Gray */
+  --chart-5: oklch(1 0 0); /* White */
+  --radius: 0.625rem;
+  --sidebar: oklch(0.97 0.02 85); /* Cream */
+  --sidebar-foreground: oklch(0.3 0.02 60); /* Brown */
+  --sidebar-primary: oklch(0.45 0.12 145); /* Green */
+  --sidebar-primary-foreground: oklch(1 0 0); /* White */
+  --sidebar-accent: oklch(0.96 0.02 120); /* Light Green */
+  --sidebar-accent-foreground: oklch(0.3 0.02 60); /* Brown */
+  --sidebar-border: oklch(0.9 0.01 85); /* Light border */
+  --sidebar-ring: oklch(0.45 0.12 145); /* Green */
+
+  /* Added custom brand colors */
+  --leaf-green: #15803d;
+  --vibrant-green: #84cc16;
+  --soft-green: #f0fdf4;
+  --charcoal-gray: #374151;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Added custom brand color utilities */
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-space-grotesk);
+  --color-leaf-green: var(--leaf-green);
+  --color-vibrant-green: var(--vibrant-green);
+  --color-soft-green: var(--soft-green);
+  --color-charcoal-gray: var(--charcoal-gray);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Added custom scrollbar styling with green theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: oklch(0.97 0.02 85);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.45 0.12 145);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.4 0.12 145);
+  }
+
+  /* Added smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom animations for Apple-style interactions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(21, 128, 61, 0.1);
+}
+
+/* Added responsive design utilities and breakpoint helpers */
+@layer utilities {
+  /* Custom responsive breakpoints */
+  .xs\:inline {
+    @media (min-width: 475px) {
+      display: inline;
+    }
+  }
+
+  .xs\:hidden {
+    @media (min-width: 475px) {
+      display: none;
+    }
+  }
+
+  /* Container improvements for better responsive behavior */
+  .container-fluid {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-fluid {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-fluid {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .text-responsive-sm {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  .text-responsive-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .text-responsive-base {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  /* Navigation specific responsive utilities */
+  .nav-height {
+    height: 3.5rem; /* 56px */
+  }
+
+  @media (min-width: 640px) {
+    .nav-height {
+      height: 4rem; /* 64px */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-height {
+      height: 4.5rem; /* 72px */
+    }
+  }
+
+  /* Flexible spacing utilities */
+  .space-responsive {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .space-responsive {
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .space-responsive {
+      gap: 1.5rem;
+    }
+  }
+
+  /* Logo and brand responsive utilities */
+  .logo-size {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .logo-size {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  /* Touch-friendly button sizing */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improved focus states for accessibility */
+  .focus-visible-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .focus-visible-ring:focus-visible {
+    outline: 2px solid oklch(0.45 0.12 145);
+    outline-offset: 2px;
+  }
+}
+
+/* Enhanced mobile menu animations and responsive behavior */
+@layer components {
+  .mobile-menu-item {
+    @apply py-3 px-4 text-lg font-medium transition-all duration-200;
+    @apply border-b border-border/30 last:border-b-0;
+    @apply hover:bg-muted/50 hover:text-primary;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .nav-link {
+    @apply transition-all duration-200 hover:text-primary;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 rounded-sm px-2 py-1;
+  }
+
+  .contact-link {
+    @apply flex items-center space-x-2 transition-all duration-200;
+    @apply hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 rounded-sm p-1;
+  }
+}
+
+/* Improved responsive container behavior */
+@media (max-width: 374px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Better mobile navigation spacing */
+@media (max-width: 640px) {
+  .mobile-nav-spacing {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
