@@ -177,8 +177,8 @@ export default function ContactSection() {
                     Email Us
                   </h4>
                   <div className="space-y-1 ml-7">
-                    <p className="text-muted-foreground font-sans">info@trendywudplast.com</p>
-                    <p className="text-muted-foreground font-sans">sales@trendywudplast.com</p>
+                    <p className="text-muted-foreground font-sans">trendywudplast@gmail.com</p>
+                    {/* <p className="text-muted-foreground font-sans">sales@trendywudplast.com</p> */}
                   </div>
                 </div>
 
@@ -188,8 +188,8 @@ export default function ContactSection() {
                     Call Us
                   </h4>
                   <div className="space-y-1 ml-7">
-                    <p className="text-muted-foreground font-sans">+91 98765 43210</p>
-                    <p className="text-muted-foreground font-sans">+91 87654 32109</p>
+                    <p className="text-muted-foreground font-sans">+91 92532 69487</p>
+                    {/* <p className="text-muted-foreground font-sans"></p> */}
                   </div>
                 </div>
 
@@ -200,8 +200,8 @@ export default function ContactSection() {
                   </h4>
                   <div className="ml-7">
                     <p className="text-muted-foreground font-sans">TRENDY WUDPLAST INDUSTRIES LLP</p>
-                    <p className="text-muted-foreground font-sans">Industrial Area, Phase-II</p>
-                    <p className="text-muted-foreground font-sans">New Delhi, India</p>
+                    <p className="text-muted-foreground font-sans">Chirod, Road, Chaudhariwas</p>
+                    <p className="text-muted-foreground font-sans">Hisar, Haryana 125007</p>
                   </div>
                 </div>
 

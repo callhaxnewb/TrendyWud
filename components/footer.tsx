@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Leaf, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -30,9 +31,13 @@ export default function Footer() {
           {/* Company Column */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-amber-800 to-amber-900 rounded-full flex items-center justify-center">
-                <span className="text-lg font-serif font-bold text-white">W</span>
-              </div>
+              <Image
+                src="/1_TrendyWudLogoFinal.png"
+                alt="Trendy Wudplast Logo"
+                width={40}
+                height={40}
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0 object-cover"
+              />
               <span className="text-xl font-serif font-bold">TRENDY WUDPLAST</span>
             </div>
             <p className="text-sm text-card/80 mb-4 font-sans">Sustainable Elegance in Every Product</p>
@@ -81,7 +86,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-card/70 font-sans">
               <p>Phone: +91 92532 69487</p>
               <p>Email: trendywud@gmail.com</p>
-              <p>Address: Industrial Area, Phase-II, New Delhi</p>
+              <p>Address: Chirod, Road, Chaudhariwas, Hisar, Haryana 125007</p>
             </div>
           </div>
         </div>
@@ -116,7 +121,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-card/20 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-card/70 font-sans">
-            <p>© 2024 TRENDY WUDPLAST. All rights reserved.</p>
+            <p>© 2025 TRENDY WUDPLAST. All rights reserved.</p>
             <div className="flex items-center space-x-1">
               <span>Made with</span>
               <Leaf className="w-4 h-4 text-primary" />

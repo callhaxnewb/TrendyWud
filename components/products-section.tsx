@@ -2,12 +2,13 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Droplets, Wrench, Leaf, CheckCircle, Zap, Mountain, Recycle } from "lucide-react"
+import Image from "next/image"
 
 const products = [
   {
     name: "WPC Doors",
     description: "Premium doors that combine the beauty of wood with the durability of composite materials.",
-    image: "/placeholder-1mfcb.png",
+    image: "/3_WPCDoorsProductCard.png",
     href: "/products/wpc-doors",
     features: [
       { icon: Droplets, text: "Water Resistant" },
@@ -19,7 +20,7 @@ const products = [
   {
     name: "Door Frames",
     description: "Precision-engineered frames that provide perfect fit and lasting performance.",
-    image: "/placeholder-7gk5n.png",
+    image: "/4_DoorFrame.png",
     href: "/products/door-frames",
     features: [
       { icon: CheckCircle, text: "Perfect Fit" },
@@ -31,7 +32,7 @@ const products = [
   {
     name: "WPC Boards",
     description: "Versatile boards for various applications, from furniture to architectural elements.",
-    image: "/wpc-boards-panels.png",
+    image: "/5_Boards.png",
     href: "/products/wpc-boards",
     features: [
       { icon: Zap, text: "Versatile Use" },
@@ -57,14 +58,14 @@ export default function ProductsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {products.map((product, index) => (
             <Card key={index} className="bg-card hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[1/1] overflow-hidden">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <CardContent className="p-6 flex flex-col h-full">
+              <CardContent className="p-6 flex flex-col h-50%">
                 <h3 className="text-2xl font-serif font-bold text-card-foreground mb-3">{product.name}</h3>
                 <p className="text-muted-foreground font-sans mb-6 flex-grow">{product.description}</p>
                 <div className="grid grid-cols-2 gap-3 mb-6">

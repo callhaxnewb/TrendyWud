@@ -8,14 +8,14 @@ const articles = [
     title: "5 Benefits of Choosing WPC Doors for Your Home",
     date: "March 15, 2024",
     preview: "Discover why WPC doors are becoming the preferred choice for modern homeowners...",
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/12_Blog1.png",
     slug: "benefits-wpc-doors-home",
   },
   {
     title: "Sustainable Construction: The WPC Advantage",
     date: "March 10, 2024",
     preview: "Learn how WPC materials contribute to eco-friendly building practices...",
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/13_Blog2.png",
     slug: "sustainable-construction-wpc-advantage",
   },
 ]

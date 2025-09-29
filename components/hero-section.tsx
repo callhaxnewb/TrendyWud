@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -8,32 +9,34 @@ export default function HeroSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="/wpc-products-showcase-hero.png"
+          src="/2_LandingPage.png"
           alt="WPC Doors, Frames and Boards Showcase"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-position-center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-foreground/40" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center lg:text-left">
-        <div className="max-w-4xl mx-auto lg:mx-0">
+      {/* Change: Alignment classes updated for consistent left alignment */}
+      <div className="relative z-10 container mx-auto px-4 text-left">
+        <div className="max-w-2xl mx-0">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-            Elevate Your Space with <span className="text-primary">Sustainable Elegance</span>
+            Elevate Your Space with <span className="text-[rgb(210,233,165)]">Sustainable Elegance</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 font-sans leading-relaxed max-w-2xl">
+          <p className="text-xl md:text-1xl text-white/90 mb-8 font-sans leading-relaxed max-w-2xl">
             At TRENDY WUDPLAST, we fuse eco-innovation with premium craftsmanship. Discover doors, frames, and boards
             that redefine luxury.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          {/* Change: Alignment classes updated for consistent left alignment */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-start">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-sans text-lg px-8 py-6"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-sans text-lg px-8 py-6 group"
               asChild
             >
               <Link href="/products">
                 Explore Our Collection
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             <Button

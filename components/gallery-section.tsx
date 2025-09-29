@@ -9,32 +9,32 @@ const projects = [
   {
     name: "Modern Residential Complex",
     category: "Residential",
-    image: "/modern-wpc-doors-building.png",
+    image: "/7_PG1.png",
   },
   {
-    name: "Corporate Office Building",
+    name: "Hotel Floors",
     category: "Commercial",
-    image: "/corporate-office-wpc-doors.png",
+    image: "/8_PG1HotelLobbyDoors.png",
   },
   {
-    name: "Luxury Hotel Interior",
-    category: "Hospitality",
-    image: "/luxury-hotel-wpc.png",
+    name: "Modern TV & Media Console",
+    category: "Furniture",
+    image: "/10_PG1TVUnitWPCBoard.png",
   },
   {
     name: "Contemporary Home Design",
     category: "Residential",
-    image: "/placeholder-pajdp.png",
+    image: "/6_PG1DoorFrame.png",
   },
   {
-    name: "Retail Store Front",
+    name: "Office Meeting Room",
     category: "Commercial",
-    image: "/modern-retail-wpc.png",
+    image: "/11_PG1OfficeWPCBoards.png",
   },
   {
-    name: "Resort Villa Project",
-    category: "Hospitality",
-    image: "/placeholder-7ffcv.png",
+    name: "Bookshelf",
+    category: "Furniture",
+    image: "/9_PG1BookShelfWPCBoard.png",
   },
 ]
 
@@ -117,21 +117,27 @@ export default function GallerySection() {
 
       {/* Lightbox */}
       {selectedImage !== null && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl max-h-full">
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          <div 
+            className="relative max-w-4xl max-h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
               src={projects[selectedImage].image || "/placeholder.svg"}
               alt={projects[selectedImage].name}
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-full object-contain rounded-lg"
             />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h3 className="text-xl font-serif font-bold mb-1">{projects[selectedImage].name}</h3>
-              <p className="text-sm font-sans">{projects[selectedImage].category}</p>
+            <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-auto bg-black/70 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-3 rounded-lg shadow-xl border border-white/10 max-w-[calc(100%-1rem)] sm:max-w-none">
+              <h3 className="text-sm sm:text-xl font-serif font-bold text-white line-clamp-1">{projects[selectedImage].name}</h3>
+              <p className="text-xs sm:text-sm font-sans text-white/80 hidden sm:block">{projects[selectedImage].category}</p>
             </div>
             <Button
               variant="ghost"
               size="icon"
-              className="absolute top-4 right-4 text-white hover:bg-white/20"
+              className="absolute top-4 right-4 text-white hover:bg-white/20 bg-black/50 backdrop-blur-sm rounded-full transition-all hover:scale-110"
               onClick={closeLightbox}
             >
               <X className="w-6 h-6" />
@@ -139,7 +145,7 @@ export default function GallerySection() {
             <Button
               variant="ghost"
               size="icon"
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 bg-[#352C24]/50 backdrop-blur-sm rounded-full transition-all hover:scale-110"
               onClick={prevImage}
             >
               <ChevronLeft className="w-6 h-6" />
@@ -147,7 +153,7 @@ export default function GallerySection() {
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 bg-black/50 backdrop-blur-sm rounded-full transition-all hover:scale-110"
               onClick={nextImage}
             >
               <ChevronRight className="w-6 h-6" />

@@ -1,3 +1,5 @@
+// app/page.tsx
+
 "use client"
 
 import { useState } from "react"
@@ -25,6 +27,7 @@ export default function Home() {
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <div className={isLoading ? "hidden" : "block"}>
         <Navigation />
+        {/* The spacer div has been removed from here */}
         <main>
           <HeroSection />
           <ProductsSection />
