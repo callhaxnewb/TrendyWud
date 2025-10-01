@@ -20,7 +20,7 @@ const products = [
   {
     name: "Door Frames",
     description: "Precision-engineered frames that provide perfect fit and lasting performance.",
-    image: "/4_DoorFrame.png",
+    image: "/14_DoorFrameProd1.png",
     href: "/products/door-frames",
     features: [
       { icon: CheckCircle, text: "Perfect Fit" },

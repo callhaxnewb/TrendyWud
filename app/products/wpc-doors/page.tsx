@@ -1,9 +1,14 @@
+// app/products/wpc-doors/page.tsx
+
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Shield, Droplets, Leaf, Volume2, Flame, Wrench } from "lucide-react"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import ContactSection from "@/components/contact-section"
 
 export const metadata: Metadata = {
   title: "Premium WPC Doors | TRENDY WUDPLAST",
@@ -11,41 +16,40 @@ export const metadata: Metadata = {
     "Experience the perfect fusion of natural wood aesthetics and advanced composite technology with our premium WPC doors.",
 }
 
-export default function WPCDoorsPage() {
-  const benefits = [
+const benefits = [
     {
-      icon: <Droplets className="h-8 w-8 text-blue-600" />,
+      icon: Droplets,
       title: "100% Waterproof",
-      description: "Never worry about moisture damage or warping",
+      description: "Never worry about moisture damage or warping.",
     },
     {
-      icon: <Shield className="h-8 w-8 text-green-600" />,
+      icon: Shield,
       title: "Termite & Pest Resistant",
-      description: "Natural protection without harmful chemicals",
+      description: "Natural protection without harmful chemicals.",
     },
     {
-      icon: <Wrench className="h-8 w-8 text-purple-600" />,
+      icon: Wrench,
       title: "Low Maintenance",
-      description: "No polishing, painting, or frequent repairs needed",
+      description: "No polishing, painting, or frequent repairs needed.",
     },
     {
-      icon: <Volume2 className="h-8 w-8 text-orange-600" />,
+      icon: Volume2,
       title: "Sound Insulation",
-      description: "Superior acoustic properties for peaceful spaces",
+      description: "Superior acoustic properties for peaceful spaces.",
     },
     {
-      icon: <Flame className="h-8 w-8 text-red-600" />,
+      icon: Flame,
       title: "Fire Retardant",
-      description: "Enhanced safety with flame-resistant properties",
+      description: "Enhanced safety with flame-resistant properties.",
     },
     {
-      icon: <Leaf className="h-8 w-8 text-green-500" />,
+      icon: Leaf,
       title: "Eco-Friendly",
-      description: "Made from 65% recycled materials",
+      description: "Made from recycled materials, reducing deforestation.",
     },
-  ]
+]
 
-  const specifications = [
+const specifications = [
     { label: "Standard Sizes", value: "2100 x 900 x 35mm, 2100 x 800 x 35mm, Custom sizes available" },
     { label: "Material Composition", value: "65% Wood Fiber, 30% HDPE, 5% Additives" },
     { label: "Density", value: "1.0 - 1.3 g/cm³" },
@@ -55,9 +59,9 @@ export default function WPCDoorsPage() {
     { label: "Color Options", value: "Natural Wood, Dark Walnut, Light Oak, White, Custom Colors" },
     { label: "Hardware Compatibility", value: "Standard door hardware" },
     { label: "Warranty", value: "10 years against manufacturing defects" },
-  ]
+]
 
-  const applications = [
+const applications = [
     {
       title: "Residential Homes",
       description: "Bedrooms, bathrooms, main doors, interior doors",
@@ -74,394 +78,169 @@ export default function WPCDoorsPage() {
       image: "/hotel-room-wpc-door.png",
     },
     {
-      title: "Institutional",
-      description: "Schools, colleges, government buildings",
+      title: "Institutional Buildings",
+      description: "Schools, colleges, government offices",
       image: "/placeholder-syvry.png",
     },
-  ]
+]
 
-  const installationSteps = [
-    {
-      step: 1,
-      title: "Measure & Select",
-      description: "Measure door opening and select appropriate frame",
-    },
-    {
-      step: 2,
-      title: "Install Frame",
-      description: "Install door frame using screws or adhesive mounting",
-    },
-    {
-      step: 3,
-      title: "Hang Door",
-      description: "Hang door using standard hinges and hardware",
-    },
-    {
-      step: 4,
-      title: "Adjust & Install",
-      description: "Adjust door alignment and install locks/handles",
-    },
-    {
-      step: 5,
-      title: "Quality Check",
-      description: "Apply final touches and quality check",
-    },
-  ]
-
-  const comparisonData = [
-    {
-      feature: "Durability",
-      wpc: "Excellent - 10+ years",
-      wood: "Good - 5-8 years",
-      steel: "Excellent - 10+ years",
-    },
-    {
-      feature: "Maintenance",
-      wpc: "Very Low",
-      wood: "High - Regular polishing",
-      steel: "Low - Occasional painting",
-    },
-    {
-      feature: "Water Resistance",
-      wpc: "100% Waterproof",
-      wood: "Poor - Swells & warps",
-      steel: "Good - May rust",
-    },
-    {
-      feature: "Aesthetics",
-      wpc: "Natural wood look",
-      wood: "Natural beauty",
-      steel: "Industrial look",
-    },
-    {
-      feature: "Installation",
-      wpc: "Easy - Standard tools",
-      wood: "Moderate",
-      steel: "Complex - Heavy",
-    },
-    {
-      feature: "Cost",
-      wpc: "Moderate",
-      wood: "Varies widely",
-      steel: "High",
-    },
-  ]
-
-  const relatedProducts = [
+const relatedProducts = [
     {
       title: "Door Frames",
-      description: "Precision-engineered frames for perfect fit",
-      image: "/precision-door-frame.png",
+      description: "Precision-engineered frames for a perfect fit.",
+      image: "/14_DoorFrameProd1.png",
       href: "/products/door-frames",
     },
     {
       title: "WPC Boards",
-      description: "Versatile boards for furniture and architecture",
+      description: "Versatile boards for furniture and architecture.",
       image: "/wpc-furniture-architecture.png",
       href: "/products/wpc-boards",
     },
-  ]
+]
 
+export default function WPCDoorsPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-primary">
-              TRENDY WUDPLAST
-            </Link>
-            <div className="flex items-center gap-4">
-              <Link href="/products" className="text-gray-600 hover:text-primary transition-colors">
-                All Products
-              </Link>
-              <Link href="/products/door-frames" className="text-gray-600 hover:text-primary transition-colors">
-                Door Frames
-              </Link>
-              <Link href="/products/wpc-boards" className="text-gray-600 hover:text-primary transition-colors">
-                WPC Boards
-              </Link>
-              <Button asChild size="sm">
-                <a href="https://wa.me/919876543210">WhatsApp</a>
-              </Button>
+    <div className="bg-background">
+      <Navigation isProductPage={true} />
+      <main>
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 text-white">
+            <div className="absolute inset-0">
+                <Image
+                    src="/3_WPCDoorsProductCard.png"
+                    alt="Luxurious WPC Door"
+                    fill
+                    className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-transparent" />
             </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Breadcrumb */}
-      <div className="container mx-auto px-4 py-4">
-        <nav className="text-sm text-gray-600">
-          <Link href="/" className="hover:text-primary">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/products" className="hover:text-primary">
-            Products
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-primary">WPC Doors</span>
-        </nav>
-      </div>
-
-      {/* Hero Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Premium WPC Doors</h1>
-              <p className="text-xl text-gray-600">Where Beauty Meets Durability</p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Experience the perfect fusion of natural wood aesthetics and advanced composite technology. Our WPC
-                doors offer unmatched performance for modern homes and commercial spaces.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                  Water Resistant
-                </Badge>
-                <Badge variant="secondary" className="bg-green-100 text-green-800">
-                  Termite Proof
-                </Badge>
-                <Badge variant="secondary" className="bg-purple-100 text-purple-800">
-                  Low Maintenance
-                </Badge>
-                <Badge variant="secondary" className="bg-emerald-100 text-emerald-800">
-                  Eco-Friendly
-                </Badge>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Request Quote
-                </Button>
-                <Button size="lg" variant="outline">
-                  Download Brochure
-                </Button>
-              </div>
-            </div>
-
-            <div className="relative">
-              <img
-                src="/premium-wpc-door-installation-luxury-home.png"
-                alt="Premium WPC Door Installation"
-                className="w-full h-auto rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Image Gallery */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Product Gallery</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <img
-                src="/wpc-door-product.png"
-                alt="WPC Door Product"
-                className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              />
-              <img
-                src="/wpc-door-angle.png"
-                alt="WPC Door Angle View"
-                className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              />
-              <img
-                src="/placeholder-sbph5.png"
-                alt="WPC Door Texture"
-                className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              />
-              <img
-                src="/wpc-door-installation.png"
-                alt="Installation Process"
-                className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              />
-              <img
-                src="/wpc-door-colors.png"
-                alt="Color Options"
-                className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              />
-              <img
-                src="/wpc-door-hardware.png"
-                alt="Hardware Options"
-                className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Benefits */}
-      <section className="py-16 bg-green-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Why Choose Our WPC Doors</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4">{benefit.icon}</div>
-                  <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Specifications */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Technical Specifications</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <table className="w-full">
-                <tbody>
-                  {specifications.map((spec, index) => (
-                    <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">{spec.label}</td>
-                      <td className="px-6 py-4 text-gray-600">{spec.value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Applications */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Perfect For</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {applications.map((app, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={app.image || "/placeholder.svg"}
-                    alt={app.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
+            <div className="container relative z-10 mx-auto px-4 text-left">
+                <nav className="text-sm mb-4">
+                    <Link href="/" className="opacity-80 hover:opacity-100">Home</Link>
+                    <span className="mx-2 opacity-50">/</span>
+                    <Link href="/products" className="opacity-80 hover:opacity-100">Products</Link>
+                    <span className="mx-2 opacity-50">/</span>
+                    <span className="font-medium">WPC Doors</span>
+                </nav>
+                <div className="max-w-xl">
+                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
+                        Premium WPC Doors
+                    </h1>
+                    <p className="text-lg md:text-xl text-white/80">
+                        Experience the perfect fusion of natural wood aesthetics and advanced composite technology.
+                    </p>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{app.title}</CardTitle>
-                  <CardDescription>{app.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+        </section>
 
-      {/* Installation Guide */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Installation Process</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-5 gap-6">
-              {installationSteps.map((step, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                    {step.step}
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-600">{step.description}</p>
-                </div>
+        {/* Key Benefits Section */}
+        <section className="py-20 bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">Why Choose Our WPC Doors?</h2>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {benefits.map((benefit, index) => (
+                <Card key={index} className="text-center bg-background hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <benefit.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl font-serif">{benefit.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground font-sans">{benefit.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Comparison Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How It Compares</h2>
-          <div className="max-w-5xl mx-auto">
-            <div className="overflow-x-auto">
-              <table className="w-full bg-white rounded-lg shadow-lg">
-                <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left p-4 font-semibold text-gray-900">Feature</th>
-                    <th className="text-center p-4 font-semibold text-white bg-primary">TRENDY WUDPLAST WPC</th>
-                    <th className="text-center p-4 font-semibold text-gray-900">Traditional Wood</th>
-                    <th className="text-center p-4 font-semibold text-gray-900">Steel Doors</th>
-                  </tr>
-                </thead>
+        {/* Technical Specifications Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-center text-foreground mb-12">Technical Specifications</h2>
+            <div className="max-w-4xl mx-auto bg-background rounded-xl shadow-lg border overflow-hidden">
+              <table className="w-full">
                 <tbody>
-                  {comparisonData.map((row, index) => (
-                    <tr key={row.feature} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="p-4 font-medium text-gray-900">{row.feature}</td>
-                      <td className="p-4 text-center bg-green-50 font-medium text-green-800">{row.wpc}</td>
-                      <td className="p-4 text-center">{row.wood}</td>
-                      <td className="p-4 text-center">{row.steel}</td>
+                  {specifications.map((spec, index) => (
+                    <tr key={index} className="border-b last:border-b-0">
+                      <td className="p-4 font-medium text-foreground w-1/3">{spec.label}</td>
+                      <td className="p-4 text-muted-foreground">{spec.value}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Related Products */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Complete Your Project</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {relatedProducts.map((product, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle>{product.title}</CardTitle>
-                  <CardDescription>{product.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button asChild className="w-full">
-                    <Link href={product.href}>
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+        {/* Applications Section */}
+        <section className="py-20 bg-muted">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-center text-foreground mb-12">Perfect For Any Setting</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {applications.map((app, index) => (
+                <Card key={index} className="relative overflow-hidden group hover:shadow-lg transition-shadow rounded-lg">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Image
+                      src={app.image || "/placeholder.svg"}
+                      alt={app.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform"
+                    />
+                    {/* FIX: Made the gradient stronger and taller for better text contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  </div>
+                  {/* FIX: Changed positioning to flexbox for better control and spacing */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-10">
+                      <CardTitle className="text-lg font-serif text-white">{app.title}</CardTitle>
+                      <CardDescription className="text-white/80 font-sans text-sm">{app.description}</CardDescription>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Get expert guidance and custom quotes for your WPC door requirements
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Get Quote
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
-            >
-              Call Now: +91 98765 43210
-            </Button>
+        {/* Related Products Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-center text-foreground mb-12">Complete Your Project</h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {relatedProducts.map((product) => (
+                <Card key={product.title} className="group overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={product.image || "/placeholder.svg"}
+                      alt={product.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="font-serif">{product.title}</CardTitle>
+                    <CardDescription className="font-sans pt-1">{product.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button asChild variant="outline" className="w-full group/button">
+                      <Link href={product.href}>
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+         <ContactSection variant="compact" />
+      </main>
+      <Footer />
     </div>
   )
 }
