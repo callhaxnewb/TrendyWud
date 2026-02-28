@@ -1,10 +1,8 @@
 // app/page.tsx
-
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import LoadingScreen from "@/components/loading-screen"
-import Navigation from "@/components/navigation"
 import HeroSection from "@/components/hero-section"
 import ProductsSection from "@/components/products-section"
 import SustainabilitySection from "@/components/sustainability-section"
@@ -13,10 +11,19 @@ import TestimonialsSection from "@/components/testimonials-section"
 import BlogSection from "@/components/blog-section"
 import FAQSection from "@/components/faq-section"
 import ContactSection from "@/components/contact-section"
-import Footer from "@/components/footer"
+
+// 1. IMPORT YOUR NEW COMPONENT HERE
+import ScrollReveal from "@/components/scroll-reveal" 
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual"
+    }
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleLoadingComplete = () => {
     setIsLoading(false)
@@ -25,20 +32,41 @@ export default function Home() {
   return (
     <>
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
-      <div className={isLoading ? "hidden" : "block"}>
-        <Navigation />
-        {/* The spacer div has been removed from here */}
+      
+      <div>
         <main>
+          {/* Hero section stays unwrapped so it's visible immediately */}
           <HeroSection />
-          <ProductsSection />
-          <SustainabilitySection />
-          <GallerySection />
-          <TestimonialsSection />
-          <FAQSection />
-          <BlogSection />
-          <ContactSection />
+          
+          {/* 2. WRAP ALL OTHER SECTIONS LIKE THIS */}
+          <ScrollReveal>
+            <ProductsSection />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <SustainabilitySection />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <GallerySection />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <TestimonialsSection />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <FAQSection />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <BlogSection />
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <ContactSection />
+          </ScrollReveal>
         </main>
-        <Footer />
       </div>
     </>
   )

@@ -1,430 +1,216 @@
+// app/blog/[slug]/page.tsx
+"use client"
+
+import { use } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
+import ContactSection from "@/components/contact-section"
 
-// This would typically come from a CMS or database
 const getArticleBySlug = (slug: string) => {
   const articles = {
     "complete-guide-wpc-doors": {
-      title: "The Complete Guide to WPC Doors: Benefits and Installation",
-      category: "Home Improvement",
-      author: {
-        name: "Technical Team",
-        role: "WPC Specialists",
-        bio: "Our technical team consists of experienced engineers and WPC specialists with over 15 years of combined experience in wood-plastic composite manufacturing and installation.",
-        image: "/team-technical.png",
-      },
+      title: "The Complete Guide to WPC Doors: Benefits & Installation",
+      category: "Knowledge Base",
+      author: "TRENDY WUDPLAST Technical Team",
       date: "March 15, 2024",
-      readTime: "8 min",
-      image: "/wpc-door-installation.png",
+      readTime: "8 min read",
+      image: "/3_WPCDoorsProductCard.png",
       content: `
-        <p>Wood Plastic Composite (WPC) doors have revolutionized the construction and home improvement industry with their unique combination of durability, aesthetics, and environmental benefits. This comprehensive guide will walk you through everything you need to know about WPC doors, from their composition to installation best practices.</p>
+        <p class="text-xl text-muted-foreground font-sans italic leading-relaxed mb-10">For decades, the construction industry accepted a frustrating compromise: we loved the look of natural wood, but we hated the inevitable maintenance. Doors would swell during the monsoons, warp in the summer heat, and eventually fall prey to termites. Wood Plastic Composite (WPC) has fundamentally changed this reality.</p>
 
-        <h2>What Are WPC Doors?</h2>
-        <p>WPC doors are manufactured using a blend of wood fibers and thermoplastic materials, creating a composite that combines the best properties of both materials. The typical composition includes:</p>
-        <ul>
-          <li>50-60% wood fibers or wood flour</li>
-          <li>30-40% thermoplastic (usually polyethylene or polypropylene)</li>
-          <li>5-10% additives (UV stabilizers, colorants, coupling agents)</li>
-        </ul>
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">The Anatomy of a WPC Door</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-4">WPC is exactly what it sounds like—a highly engineered hybrid. By taking fine wood fibers and binding them with high-density thermoplastics under extreme heat and pressure, we create a material that refuses to compromise. It has the weight, feel, and workability of wood, but the impenetrable armor of a polymer.</p>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">This isn't just mixing sawdust and plastic. It is a precise matrix that ensures the final product will not expand or contract when the humidity fluctuates. For architects and homeowners alike, this means a door that fits its frame perfectly on day one, and day ten thousand.</p>
 
-        <h2>Key Benefits of WPC Doors</h2>
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">The Non-Negotiable Benefits</h2>
         
-        <h3>Water Resistance</h3>
-        <p>Unlike traditional wood doors, WPC doors offer excellent moisture resistance, making them ideal for bathrooms, kitchens, and areas with high humidity. The plastic component creates a barrier that prevents water absorption and subsequent warping or rotting.</p>
+        <h3 class="text-xl font-serif font-bold text-foreground mt-8 mb-3">1. Absolute Moisture Immunity</h3>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">Traditional wooden bathroom doors inevitably rot from the bottom up. Because the polymer matrix in WPC encapsulates the wood fibers entirely, water cannot penetrate the surface. You can literally hose a WPC door down, making it the ultimate solution for bathrooms, kitchens, and exterior facing areas.</p>
 
-        <h3>Termite Protection</h3>
-        <p>The synthetic component in WPC doors makes them naturally resistant to termites and other wood-boring insects, eliminating the need for chemical treatments and ensuring long-term durability.</p>
+        <h3 class="text-xl font-serif font-bold text-foreground mt-8 mb-3">2. The End of the Termite Threat</h3>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">Termites are a silent, expensive nightmare for property owners. Because WPC lacks the continuous cellulose structure that insects feed on, it is inherently termite-proof. No chemical sprays, no toxic treatments—just total peace of mind.</p>
 
-        <h3>Low Maintenance</h3>
-        <p>WPC doors require minimal maintenance compared to solid wood doors. They don't need regular painting, staining, or sealing, saving both time and money over their lifespan.</p>
+        <h3 class="text-xl font-serif font-bold text-foreground mt-8 mb-3">3. Acoustic and Thermal Insulation</h3>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">Thanks to its dense core and engineered structure, WPC provides excellent sound dampening. Whether it's keeping street noise out of a bedroom or maintaining privacy in a corporate boardroom, the material acts as a natural acoustic barrier.</p>
 
-        <h3>Eco-Friendly Aspects</h3>
-        <p>WPC doors contribute to environmental conservation by utilizing recycled wood waste and plastic materials, reducing the demand for virgin timber and helping divert plastic waste from landfills.</p>
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">Installation: Familiar Yet Superior</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-4">One of the greatest advantages of WPC is that carpenters don't need to learn a new trade. WPC doors can be cut, routed, and drilled using standard woodworking tools. However, because they are significantly denser than cheap hollow-core doors, they offer exceptional screw-holding capacity.</p>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">When hanging a WPC door, the hinges grip tighter and stay secure longer, preventing the dreaded "door sag" that plagues heavy wooden doors over time.</p>
 
-        <h2>Applications and Use Cases</h2>
-        
-        <h3>Residential Applications</h3>
-        <ul>
-          <li>Interior doors for bedrooms, bathrooms, and kitchens</li>
-          <li>Exterior doors for patios and balconies</li>
-          <li>Closet and wardrobe doors</li>
-          <li>Partition doors in modern homes</li>
-        </ul>
-
-        <h3>Commercial Applications</h3>
-        <ul>
-          <li>Office buildings and corporate spaces</li>
-          <li>Hotels and hospitality venues</li>
-          <li>Healthcare facilities</li>
-          <li>Educational institutions</li>
-        </ul>
-
-        <h2>Installation Guide</h2>
-        
-        <h3>Pre-Installation Checklist</h3>
-        <ul>
-          <li>Measure door opening accurately</li>
-          <li>Check frame alignment and squareness</li>
-          <li>Ensure proper clearance for door swing</li>
-          <li>Verify hardware compatibility</li>
-        </ul>
-
-        <h3>Step-by-Step Installation Process</h3>
-        <ol>
-          <li><strong>Prepare the Opening:</strong> Clean the door frame and check for any damage or irregularities.</li>
-          <li><strong>Position the Door:</strong> Carefully place the WPC door in the frame, ensuring proper alignment.</li>
-          <li><strong>Install Hinges:</strong> Mark hinge positions and install using appropriate screws for WPC material.</li>
-          <li><strong>Hang the Door:</strong> Attach the door to the frame hinges and test the swing.</li>
-          <li><strong>Install Hardware:</strong> Add door handles, locks, and other hardware as required.</li>
-          <li><strong>Final Adjustments:</strong> Make any necessary adjustments for proper fit and operation.</li>
-        </ol>
-
-        <h2>Maintenance Tips</h2>
-        
-        <h3>Regular Cleaning</h3>
-        <p>Clean WPC doors with mild soap and water. Avoid harsh chemicals or abrasive cleaners that could damage the surface finish.</p>
-
-        <h3>Hardware Maintenance</h3>
-        <p>Regularly lubricate hinges and locks to ensure smooth operation. Check and tighten screws periodically.</p>
-
-        <h3>What to Avoid</h3>
-        <ul>
-          <li>Excessive force when opening or closing</li>
-          <li>Exposure to extreme temperatures</li>
-          <li>Sharp objects that could scratch the surface</li>
-          <li>Harsh chemical cleaners</li>
-        </ul>
-
-        <h2>Conclusion</h2>
-        <p>WPC doors offer an excellent balance of durability, aesthetics, and environmental responsibility. Their low maintenance requirements and superior performance in various conditions make them an ideal choice for both residential and commercial applications. When properly installed and maintained, WPC doors can provide decades of reliable service while contributing to sustainable building practices.</p>
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">The Bottom Line</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">Choosing a door is no longer about picking the lesser of two evils. WPC doors offer the warmth and aesthetic appeal of traditional timber, but engineer away all of its flaws. It is simply a smarter way to build.</p>
       `,
-      tags: ["WPC Doors", "Installation", "Home Improvement", "Maintenance", "Sustainability"],
     },
+    "sustainable-building-wpc-materials": {
+      title: "Sustainable Building: WPC Materials & The Environment",
+      category: "Sustainability",
+      author: "TRENDY WUDPLAST Eco Team",
+      date: "March 10, 2024",
+      readTime: "6 min read",
+      image: "/16_blogPic.png",
+      content: `
+        <p class="text-xl text-muted-foreground font-sans italic leading-relaxed mb-10">The construction sector is at a crossroads. As global demand for housing and infrastructure skyrockets, the environmental toll of traditional building materials has become impossible to ignore. We can no longer afford to clear-cut mature forests just to build doors and frames.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">Waste to Wealth: The WPC Formula</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">Wood Plastic Composite (WPC) is born from the principles of the circular economy. Instead of logging healthy trees, WPC manufacturing utilizes reclaimed wood fibers—often the byproducts of sawmills and agricultural waste that would otherwise be burned or sent to a landfill.</p>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">These fibers are then bonded with thermoplastics. By upcycling these materials, WPC actively reduces the burden on our planet's waste management systems while preserving our natural forest canopies.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">Zero Deforestation Footprint</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">Consider the lifecycle of a traditional solid teak or mahogany door. It takes decades for a tree to mature to the point where it can be harvested for timber. Once cut, only a fraction of that tree is usable for premium doors. WPC completely bypasses this destructive cycle. When you choose WPC, you are making a direct, quantifiable decision to leave trees in the ground where they belong.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">Longevity is the Ultimate Sustainability</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-4">True sustainability isn't just about how a product is made; it's about how long it lasts. A product that needs to be replaced every five years requires a constant cycle of manufacturing, shipping, and disposal.</p>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">Because WPC is impervious to rot, moisture, and termites, its lifespan dramatically exceeds that of standard timber and MDF. A WPC board installed today will perform flawlessly for decades, drastically reducing the lifetime carbon footprint of the building it occupies.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">A Toxin-Free Environment</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">Traditional wood products often require harsh chemical treatments to protect them from insects and the elements, while plywoods heavily rely on formaldehyde-based adhesives that off-gas into indoor air. TRENDY WUDPLAST WPC products are free from toxic chemicals and harmful emissions, ensuring safer air quality for your family or workforce.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">Looking Forward</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">Beautiful spaces shouldn't cost the earth. By embracing WPC technology, architects, builders, and homeowners are proving that you can achieve premium aesthetics and unmatched durability while actively participating in global conservation efforts.</p>
+      `,
+    },
+    "wpc-vs-traditional-wood-cost-analysis": {
+      title: "WPC vs Traditional Wood: A Comprehensive Cost Analysis",
+      category: "Industry Insights",
+      author: "TRENDY WUDPLAST Analytics",
+      date: "February 28, 2024",
+      readTime: "10 min read",
+      image: "/14_DoorFrameProd1.png",
+      content: `
+        <p class="text-xl text-muted-foreground font-sans italic leading-relaxed mb-10">In construction, the price tag on the shelf rarely tells the whole story. When comparing Wood Plastic Composite (WPC) to traditional wood, many buyers only look at the initial purchase price. But to understand the true financial impact, we have to look at the Total Cost of Ownership (TCO) over a 10 to 15-year horizon.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">The Illusion of "Cheap" Wood</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">Commercial plywood or flush doors might present a lower upfront cost, while premium hardwoods like Teak demand a massive initial premium. WPC sits comfortably in the middle at the time of purchase. However, the moment a traditional wooden door is installed, the invisible meter starts running.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">Breaking Down the Hidden Costs</h2>
+        
+        <h3 class="text-xl font-serif font-bold text-foreground mt-8 mb-3">The Polishing and Painting Tax</h3>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">Natural wood requires regular sealing, polishing, or painting to maintain its aesthetic and protect it from the elements. Over a decade, a wooden door will typically need to be refinished 3 to 4 times. When you factor in the cost of premium polish, primer, and skilled labor, the maintenance cost quickly eclipses the original price of the door. WPC, on the other hand, comes pre-finished. It never needs a coat of paint. A simple wipe down is all it takes to keep it looking brand new.</p>
+
+        <h3 class="text-xl font-serif font-bold text-foreground mt-8 mb-3">Pest Control and Damage</h3>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-6">If you live in an area prone to termites or borers, wooden doors are a liability. Annual anti-termite treatments add up. Worse, if a termite infestation takes hold, the door, the frame, and the labor to replace them must be paid for all over again. WPC's synthetic matrix makes it 100% termite-proof from day one, permanently eliminating this recurring expense.</p>
+
+        <h3 class="text-xl font-serif font-bold text-foreground mt-8 mb-3">Weathering and Replacement</h3>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">Moisture is wood's greatest enemy. Bathroom doors or external frames made of wood absorb humidity, causing them to swell and stick in the monsoon, and shrink and crack in the summer. Eventually, water damage leads to rot, necessitating a full replacement. WPC's 100% waterproof nature means it has a zero-percent failure rate due to moisture. You buy it once, and you are done.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">The ROI of Zero Maintenance</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-4">When we model the costs over a 15-year period, the data is striking. Traditional wood starts cheaper but its cumulative cost curve climbs steeply year after year due to labor, chemicals, and repairs.</p>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">WPC represents a flat line. The price you pay on day one is essentially the only price you will ever pay. For large-scale projects like hotels, hospitals, or residential complexes with hundreds of doors, this zero-maintenance characteristic translates to millions of rupees saved in operational budgets.</p>
+
+        <h2 class="text-3xl font-serif font-bold text-foreground mt-12 mb-6">The Verdict</h2>
+        <p class="text-lg text-muted-foreground font-sans leading-relaxed mb-8">WPC is not just a building material; it is a financial strategy. By eliminating the unpredictable costs of maintenance, pest control, and premature replacement, WPC transforms doors and frames from ongoing liabilities into lifelong assets.</p>
+      `,
+    }
   }
 
   return articles[slug as keyof typeof articles] || null
 }
 
-const relatedArticles = [
-  {
-    slug: "sustainable-building-wpc-materials",
-    title: "Sustainable Building: How WPC Materials Reduce Environmental Impact",
-    date: "March 10, 2024",
-    image: "/wpc-sustainability.png",
-  },
-  {
-    slug: "wpc-vs-traditional-wood-cost-analysis",
-    title: "WPC vs Traditional Wood: A Comprehensive Cost Analysis",
-    date: "February 28, 2024",
-    image: "/wpc-cost-comparison.png",
-  },
-  {
-    slug: "wpc-door-maintenance-tips",
-    title: "Essential Maintenance Tips for WPC Doors and Frames",
-    date: "February 20, 2024",
-    image: "/wpc-maintenance.png",
-  },
-  {
-    slug: "commercial-wpc-applications",
-    title: "Commercial Applications of WPC: Beyond Residential Use",
-    date: "February 15, 2024",
-    image: "/commercial-wpc.png",
-  },
-]
-
-const categories = [
-  "WPC Technology",
-  "Sustainability",
-  "Installation Tips",
-  "Design Trends",
-  "Product Comparison",
-  "Maintenance",
-  "Home Improvement",
-  "Commercial Applications",
-]
-
-export default function BlogArticlePage({ params }: { params: { slug: string } }) {
-  const article = getArticleBySlug(params.slug)
+export default function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = use(params)
+  const article = getArticleBySlug(resolvedParams.slug)
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Article Not Found</h1>
-          <Link href="/blog">
-            <Button>Back to Blog</Button>
-          </Link>
-        </div>
+      <div className="min-h-screen bg-background pt-24 flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-serif font-bold text-foreground mb-6">Article Not Found</h1>
+        <Link href="/blog">
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-sans">Return to Journal</Button>
+        </Link>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation Breadcrumb */}
-      <div className="bg-gray-50 py-4">
-        <div className="container mx-auto px-4">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
+    <div className="min-h-screen bg-background">
+      
+      {/* Breadcrumb */}
+      <div className="bg-muted pt-28 lg:pt-32 pb-4 border-b border-border/50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <nav className="flex items-center space-x-2 text-sm font-sans text-muted-foreground">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-primary transition-colors">
-              Blog
-            </Link>
+            <Link href="/blog" className="hover:text-primary transition-colors">Journal</Link>
             <span>/</span>
-            <span className="text-gray-900 font-medium">{article.title}</span>
+            <span className="text-foreground font-medium truncate">{article.title}</span>
           </nav>
-          <Link
-            href="/blog"
-            className="inline-flex items-center mt-4 text-primary hover:text-primary/80 transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Blog
-          </Link>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Main Content */}
-          <article className="lg:w-2/3">
-            {/* Article Header */}
-            <header className="mb-8">
-              <div className="mb-4">
-                <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                  {article.category}
-                </span>
-              </div>
+      <article className="container mx-auto px-4 py-16 max-w-4xl">
+        
+        {/* Centered Article Header */}
+        <header className="text-center mb-12">
+          <div className="mb-6">
+            <span className="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider font-sans">
+              {article.category}
+            </span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-8 leading-tight">
+            {article.title}
+          </h1>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{article.title}</h1>
-
-              <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
-                <div className="flex items-center space-x-2">
-                  <img
-                    src={article.author.image || "/placeholder.svg"}
-                    alt={article.author.name}
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-medium text-gray-900">{article.author.name}</p>
-                    <p className="text-sm text-gray-500">{article.author.role}</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>{article.date}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Clock className="h-4 w-4" />
-                  <span>{article.readTime}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Share2 className="h-4 w-4" />
-                  <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
-                      <Facebook className="h-4 w-4" />
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Twitter className="h-4 w-4" />
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              <img
-                src={article.image || "/placeholder.svg"}
-                alt={article.title}
-                className="w-full aspect-video object-cover rounded-lg"
-              />
-            </header>
-
-            {/* Article Content */}
-            <div
-              className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-            />
-
-            {/* Article Footer */}
-            <footer className="mt-12 pt-8 border-t border-gray-200">
-              {/* Tags */}
-              <div className="mb-8">
-                <h3 className="font-bold text-gray-900 mb-4">Tags</h3>
-                <div className="flex flex-wrap gap-2">
-                  {article.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary hover:text-white cursor-pointer transition-colors"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Author Bio */}
-              <div className="bg-gray-50 rounded-lg p-6 mb-8">
-                <div className="flex items-start space-x-4">
-                  <img
-                    src={article.author.image || "/placeholder.svg"}
-                    alt={article.author.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-1">{article.author.name}</h4>
-                    <p className="text-primary font-medium mb-2">{article.author.role}</p>
-                    <p className="text-gray-600">{article.author.bio}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Sharing */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <span className="font-medium text-gray-900">Share this article:</span>
-                  <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
-                      <Facebook className="h-4 w-4 mr-2" />
-                      Facebook
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Twitter className="h-4 w-4 mr-2" />
-                      Twitter
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Linkedin className="h-4 w-4 mr-2" />
-                      LinkedIn
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </footer>
-          </article>
-
-          {/* Sidebar */}
-          <aside className="lg:w-1/3">
-            <div className="sticky top-8 space-y-8">
-              {/* Expert Consultation Card */}
-              <Card className="bg-light-green">
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-2">Need Expert Advice?</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Get personalized consultation from our WPC specialists for your project.
-                  </p>
-                  <form className="space-y-4">
-                    <Input placeholder="Your Name" />
-                    <Input placeholder="Phone Number" type="tel" />
-                    <Input placeholder="Email Address" type="email" />
-                    <select className="w-full p-3 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent">
-                      <option value="">Select Interest</option>
-                      <option value="wpc-doors">WPC Doors</option>
-                      <option value="door-frames">Door Frames</option>
-                      <option value="wpc-boards">WPC Boards</option>
-                      <option value="general">General Inquiry</option>
-                    </select>
-                    <Textarea placeholder="Your Message" rows={3} />
-                    <Button className="w-full bg-primary hover:bg-primary/90">Get Consultation</Button>
-                  </form>
-                </CardContent>
-              </Card>
-
-              {/* Table of Contents */}
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-4">Table of Contents</h3>
-                  <nav className="space-y-2">
-                    <a href="#what-are-wpc-doors" className="block text-gray-600 hover:text-primary transition-colors">
-                      What Are WPC Doors?
-                    </a>
-                    <a href="#key-benefits" className="block text-gray-600 hover:text-primary transition-colors">
-                      Key Benefits of WPC Doors
-                    </a>
-                    <a href="#applications" className="block text-gray-600 hover:text-primary transition-colors">
-                      Applications and Use Cases
-                    </a>
-                    <a href="#installation-guide" className="block text-gray-600 hover:text-primary transition-colors">
-                      Installation Guide
-                    </a>
-                    <a href="#maintenance-tips" className="block text-gray-600 hover:text-primary transition-colors">
-                      Maintenance Tips
-                    </a>
-                  </nav>
-                </CardContent>
-              </Card>
-
-              {/* Related Articles */}
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-4">Related Articles</h3>
-                  <div className="space-y-4">
-                    {relatedArticles.map((relatedArticle) => (
-                      <Link key={relatedArticle.slug} href={`/blog/${relatedArticle.slug}`} className="block group">
-                        <div className="flex space-x-3">
-                          <img
-                            src={relatedArticle.image || "/placeholder.svg"}
-                            alt={relatedArticle.title}
-                            className="w-16 h-16 object-cover rounded"
-                          />
-                          <div className="flex-1">
-                            <h4 className="font-medium text-gray-900 group-hover:text-primary transition-colors line-clamp-2 text-sm">
-                              {relatedArticle.title}
-                            </h4>
-                            <p className="text-xs text-gray-500 mt-1">{relatedArticle.date}</p>
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                  <Link href="/blog" className="block mt-4">
-                    <Button variant="outline" className="w-full bg-transparent">
-                      View All Related
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Categories */}
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-4">Categories</h3>
-                  <div className="space-y-2">
-                    {categories.map((category) => (
-                      <Link
-                        key={category}
-                        href={`/blog?category=${encodeURIComponent(category)}`}
-                        className="block text-gray-600 hover:text-primary transition-colors py-1"
-                      >
-                        {category}
-                      </Link>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Newsletter Signup */}
-              <Card className="bg-cream">
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-2">Get Weekly Insights</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Subscribe to receive the latest WPC industry insights and expert tips.
-                  </p>
-                  <div className="space-y-3">
-                    <Input placeholder="Enter your email" type="email" />
-                    <Button className="w-full bg-primary hover:bg-primary/90">Subscribe</Button>
-                  </div>
-                </CardContent>
-              </Card>
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-sans text-muted-foreground uppercase tracking-wider font-medium">
+            <span>By {article.author}</span>
+            <div className="flex items-center">
+              <Calendar className="w-4 h-4 mr-2 text-primary" />
+              {article.date}
             </div>
-          </aside>
+            <div className="flex items-center">
+              <Clock className="w-4 h-4 mr-2 text-primary" />
+              {article.readTime}
+            </div>
+          </div>
+        </header>
+
+        {/* Feature Image */}
+        <div className="relative aspect-video w-full mb-16 rounded-2xl overflow-hidden shadow-xl">
+          <Image
+            src={article.image || "/placeholder.svg"}
+            alt={article.title}
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
+
+        {/* Centered Reading Content */}
+        <div className="max-w-3xl mx-auto">
+          {/* I have removed the Tailwind Typography 'prose' classes here, so our custom HTML classes from the data object will take full priority! */}
+          <div dangerouslySetInnerHTML={{ __html: article.content }} />
+
+          {/* Minimal Social Share Footer */}
+          <footer className="mt-16 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <Link href="/blog" className="inline-flex items-center font-sans font-medium text-muted-foreground hover:text-primary transition-colors group">
+              <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Back to Articles
+            </Link>
+            
+            <div className="flex items-center space-x-4">
+              <span className="font-sans text-sm font-medium text-muted-foreground uppercase tracking-wider">Share</span>
+              <div className="flex space-x-2">
+                <Button variant="outline" size="icon" className="rounded-full bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary border-border/50">
+                  <Facebook className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon" className="rounded-full bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary border-border/50">
+                  <Linkedin className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon" className="rounded-full bg-transparent hover:bg-primary/10 hover:text-primary hover:border-primary border-border/50">
+                  <Share2 className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </article>
+
+      <div className="border-t border-border/50">
+        <ContactSection variant="compact" />
       </div>
+      
     </div>
   )
 }

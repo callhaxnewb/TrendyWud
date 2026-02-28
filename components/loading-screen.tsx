@@ -1,51 +1,77 @@
+// components/loading-screen.tsx
 "use client"
 
 import { useState, useEffect } from "react"
-import { Leaf } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
+    // The total time the loading screen stays visible (2 seconds)
     const timer = setTimeout(() => {
       setIsVisible(false)
-      setTimeout(onComplete, 500) // Wait for fade out animation
-    }, 2500)
+      // Wait for the fade-out animation to finish before destroying the component
+      setTimeout(onComplete, 800) 
+    }, 2000)
 
     return () => clearTimeout(timer)
   }, [onComplete])
 
-  if (!isVisible) {
-    return (
-      <div className="fixed inset-0 bg-background z-50 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none" />
-    )
-  }
-
   return (
-    <div className="fixed inset-0 bg-background z-50 flex items-center justify-center transition-opacity duration-500">
-      <div className="text-center">
-        <div className="relative mb-6">
-          {/* Company Logo - Circular wood texture with W and leaves */}
-          <div className="w-24 h-24 mx-auto bg-gradient-to-br from-amber-800 to-amber-900 rounded-full flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-700/50 to-amber-900/50 rounded-full" />
-            <span className="text-3xl font-serif font-bold text-white relative z-10">W</span>
-            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-              <Leaf className="w-4 h-4 text-primary animate-pulse" />
-              <Leaf className="w-3 h-3 text-primary animate-pulse delay-300 ml-2" />
-            </div>
-          </div>
-          {/* Floating animation */}
-          <div className="absolute inset-0 animate-bounce">
-            <Leaf className="w-6 h-6 text-primary absolute top-0 left-8 animate-pulse" />
-            <Leaf className="w-4 h-4 text-primary absolute top-4 right-6 animate-pulse delay-500" />
-          </div>
-        </div>
-        <h1 className="text-2xl font-serif font-bold text-foreground mb-2">TRENDY WUDPLAST</h1>
-        <p className="text-muted-foreground font-sans">Sustainable Elegance in Every Product</p>
-        <div className="mt-6 flex justify-center">
-          <div className="w-8 h-1 bg-primary rounded-full animate-pulse" />
-        </div>
-      </div>
-    </div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          // This creates the cinematic fade-out when the loading is done
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          // Using a deep, rich custom hex that perfectly matches your hero section's vibe
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#423D33]" 
+        >
+          {/* Logo and Brand Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="flex flex-col items-center text-center"
+          >
+            {/* Pulling in your actual logo from the footer */}
+            <Image 
+              src="/1_TrendyWudLogoFinal.png" 
+              alt="Trendy Wudplast Logo" 
+              width={80} 
+              height={80} 
+              className="mb-6 rounded-full shadow-2xl" 
+            />
+            
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-white tracking-widest mb-3 uppercase drop-shadow-lg">
+              Trendy Wudplast
+            </h1>
+            
+            {/* The exact sage green color from your hero section */}
+            <p className="text-[#C6D39C] font-sans tracking-[0.2em] text-xs sm:text-sm uppercase opacity-90">
+              Sustainable Elegance
+            </p>
+          </motion.div>
+
+          {/* Minimalist Luxury Loading Bar */}
+          <motion.div
+            className="mt-12 w-48 sm:w-64 h-[2px] bg-stone-700 overflow-hidden rounded-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            <motion.div
+              className="h-full bg-[#C6D39C]"
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }

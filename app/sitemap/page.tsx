@@ -1,19 +1,26 @@
+// app/sitemap/page.tsx
+
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import ContactSection from "@/components/contact-section"
 
 export const metadata: Metadata = {
   title: "Sitemap | TRENDY WUDPLAST",
   description: "Navigate through all pages and sections of the TRENDY WUDPLAST website.",
 }
 
-export default function SitemapPage() {
-  const siteStructure = [
+const siteStructure = [
     {
       title: "Main Pages",
       links: [
         { name: "Home", href: "/" },
         { name: "About Us", href: "/about" },
-        { name: "Contact Us", href: "/contact" },
+        { name: "Contact Us", href: "/#contact" },
       ],
     },
     {
@@ -52,68 +59,70 @@ export default function SitemapPage() {
         { name: "Sitemap", href: "/sitemap" },
       ],
     },
-  ]
+]
 
+export default function SitemapPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation Breadcrumb */}
-      <div className="bg-gray-50 py-4">
-        <div className="container mx-auto px-4">
-          <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">Sitemap</span>
-          </nav>
-        </div>
-      </div>
+    <div className="bg-background">
+      <Navigation isProductPage={true} />
+      <main>
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 text-white">
+            <div className="absolute inset-0">
+                <Image
+                    src="/wpc-products-showcase-hero.png"
+                    alt="Trendy Wudplast Products"
+                    fill
+                    className="object-cover"
+                />
+                <div className="absolute inset-0 bg-foreground/70" />
+            </div>
+            <div className="container relative z-10 mx-auto px-4 text-left">
+                <nav className="text-sm mb-4">
+                    <Link href="/" className="opacity-80 hover:opacity-100">Home</Link>
+                    <span className="mx-2 opacity-50">/</span>
+                    <span className="font-medium">Sitemap</span>
+                </nav>
+                <div className="max-w-2xl">
+                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
+                        Website Sitemap
+                    </h1>
+                    <p className="text-lg md:text-xl text-white/80">
+                      Navigate through all pages and sections of our website with ease.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Sitemap</h1>
-          <p className="text-xl text-gray-600 mb-12">Navigate through all pages and sections of our website</p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {siteStructure.map((section, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">{section.title}</h2>
-                <ul className="space-y-2">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <Link href={link.href} className="text-gray-600 hover:text-primary transition-colors">
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 bg-light-green rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Need Help Finding Something?</h2>
-            <p className="text-gray-600 mb-6">
-              Can't find what you're looking for? Our team is here to help you navigate our products and services.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <button className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
-                  Contact Us
-                </button>
-              </Link>
-              <a
-                href="https://wa.me/919876543210"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors"
-              >
-                WhatsApp Support
-              </a>
+        {/* Sitemap Content */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {siteStructure.map((section, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="font-serif">{section.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {section.links.map((link, linkIndex) => (
+                        <li key={linkIndex}>
+                          <Link href={link.href} className="font-sans text-muted-foreground hover:text-primary transition-colors">
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+        
+        <ContactSection variant="compact" />
+      </main>
+      <Footer />
     </div>
   )
 }

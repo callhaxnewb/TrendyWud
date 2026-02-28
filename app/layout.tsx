@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import "./globals.css"
 import ScrollToTop from "@/components/scroll-to-top"
+import SiteShell from "@/components/site-shell"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -45,7 +46,9 @@ html {
       </head>
       <body>
         <ScrollToTop />
-        {children}
+        <SiteShell>
+          {children}
+        </SiteShell>
       </body>
     </html>
   )

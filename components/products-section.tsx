@@ -1,4 +1,8 @@
+// components/products-section.tsx
+"use client"
+
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Droplets, Wrench, Leaf, CheckCircle, Zap, Mountain, Recycle } from "lucide-react"
@@ -44,6 +48,27 @@ const products = [
 ]
 
 export default function ProductsSection() {
+  // 1. The Container Rules (handles the staggered delay)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  // 2. The Individual Card Rules (handles the slide up)
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    },
+  }
+
   return (
     <section id="products" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
@@ -55,34 +80,44 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Changed to motion.div and added container rules */}
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {products.map((product, index) => (
-            <Card key={index} className="bg-card hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-              <div className="aspect-[1/1] overflow-hidden">
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardContent className="p-6 flex flex-col h-50%">
-                <h3 className="text-2xl font-serif font-bold text-card-foreground mb-3">{product.name}</h3>
-                <p className="text-muted-foreground font-sans mb-6 flex-grow">{product.description}</p>
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {product.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-2">
-                      <feature.icon className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-sm font-sans text-card-foreground">{feature.text}</span>
-                    </div>
-                  ))}
+            // Wrapped each card in a motion.div to catch the staggered animation
+            <motion.div key={index} variants={itemVariants}>
+              <Card className="bg-card hover:shadow-lg transition-shadow duration-300 overflow-hidden h-full flex flex-col">
+                <div className="aspect-[1/1] overflow-hidden">
+                  <img
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <Button variant="outline" className="w-full mt-auto bg-transparent" asChild>
-                  <Link href={product.href}>Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-serif font-bold text-card-foreground mb-3">{product.name}</h3>
+                  <p className="text-muted-foreground font-sans mb-6 flex-grow">{product.description}</p>
+                  <div className="grid grid-cols-2 gap-3 mb-6">
+                    {product.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center space-x-2">
+                        <feature.icon className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm font-sans text-card-foreground">{feature.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button variant="outline" className="w-full mt-auto bg-transparent" asChild>
+                    <Link href={product.href}>Learn More</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="text-center">
           <Button

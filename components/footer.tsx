@@ -9,9 +9,10 @@ const quickLinks = [
   { name: "About Us", href: "/about" },
   { name: "Products", href: "/products" },
   { name: "Blog", href: "/blog" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Contact", href: "/contact" },
   { name: "Warranty", href: "/warranty" },
+  { name: "Shipping Policy", href: "/shipping-policy" },
+  { name: "Return Policy", href: "/return-policy" },
   { name: "Sitemap", href: "/sitemap" },
 ]
 
