@@ -58,7 +58,6 @@ const specifications = [
     { label: "Finish Options", value: "Smooth, Wood Grain, Textured" },
     { label: "Color Options", value: "Natural Wood, Dark Walnut, Light Oak, White, Custom Colors" },
     { label: "Hardware Compatibility", value: "Standard door hardware" },
-    { label: "Warranty", value: "10 years against manufacturing defects" },
 ]
 
 const applications = [
